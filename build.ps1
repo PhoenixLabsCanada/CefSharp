@@ -1,7 +1,7 @@
 param(
     [ValidateSet("vs2013", "vs2015", "nupkg-only", "gitlink")]
     [Parameter(Position = 0)] 
-    [string] $Target = "vs2013",
+    [string] $Target = "vs2015",
     [Parameter(Position = 1)]
     [string] $Version = "58.0.0",
     [Parameter(Position = 2)]
@@ -232,6 +232,7 @@ function NugetPackageRestore
         Die "Please install nuget. More information available at: http://docs.nuget.org/docs/start-here/installing-nuget"
     }
 
+    . $nuget update -self
     Write-Diagnostic "Restore Nuget Packages"
 
     # Restore packages
